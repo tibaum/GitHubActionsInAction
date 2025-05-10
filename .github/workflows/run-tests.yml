@@ -1,0 +1,20 @@
+name: run tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: environment to run tests against
+        type: choice
+        options:
+          - integration
+          - uat
+        required: true
+        default: uat
+
+jobs:
+  RunTests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print environment
+        run: echo "Environment: ${{ inputs.environment }}"
